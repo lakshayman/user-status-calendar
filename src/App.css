@@ -1,5 +1,9 @@
 .App {
-  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .App-logo {
@@ -28,16 +32,31 @@
   color: #61dafb;
 }
 
+.auto-input {
+  margin-bottom: 20px;
+}
+
 .react-calendar .OOO {
-  background: #D2686E;
+  background: #000000;
+  color: #ffffff;
 }
 
 .react-calendar .ACTIVE {
-  background: #9EE3B4;
+  background: #9ee3b4;
 }
 
 .react-calendar .IDLE {
-  background: #F3E496;
+  background: #f3e496;
+}
+
+.react-calendar .sunday {
+  background: #727270;
+  color: #ffffff;
+}
+
+.react-calendar__navigation .react-calendar__navigation__next2-button,
+.react-calendar__navigation .react-calendar__navigation__prev2-button {
+  display: none;
 }
 
 @keyframes App-logo-spin {
