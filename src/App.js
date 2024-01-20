@@ -11,16 +11,25 @@ const status = {
 
 const logs = [
   {
+    id: 1,
+    startTime: 1704519949000,
+    endTime: 1704519949000,
+    status: "OOO",
+  },
+  {
+    id: 2,
     startTime: 1702359023000,
     endTime: 1702987200000,
     status: "OOO",
   },
   {
+    id: 3,
     startTime: 1703310331000,
     endTime: 1704260731000,
     status: "OOO",
   },
   {
+    id: 4,
     startTime: 1704642331000,
     endTime: 1704736800000,
     status: "OOO",
@@ -31,7 +40,9 @@ const processData = (itemId) => {
   if(itemId === null) {
     return []
   } else {
-    return [...getDatesInRange(new Date(logs[itemId-1].startTime), new Date(logs[itemId-1].endTime))]
+    const log = logs.find(log => log.id === itemId)
+    if(!log) return [];
+    return [...getDatesInRange(new Date(log.startTime), new Date(log.endTime))]
   }
   const data = [];
   const currentStatus = status;
@@ -144,9 +155,7 @@ function App() {
     // console.log(processedData, date.getTime())
 
     if (date.getDay() === 0) return "sunday";
-
     if (processedData.length !== 0 && processedData.includes(date.getTime())) return "OOO";
-    console.log("Lakshay", date.getTime())
     return null;
   };
 
@@ -180,9 +189,9 @@ function App() {
       <Calendar
         onChange={onChange}
         value={value}
-        onClickDay={(value, event) =>
-          console.log("Clicked day: ", value.getTime())
-        }
+        // onClickDay={(value, event) =>
+        //   console.log("Clicked day: ", value.getTime())
+        // }
         tileClassName={setTileClassName}
         view="month"
       />
